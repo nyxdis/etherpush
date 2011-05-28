@@ -8,7 +8,7 @@ static gboolean listen_incoming(GSocketService*, GSocketService*, GObject*,
 void start_listener(void)
 {
 	GSocketService *service = g_socket_service_new();
-	GInetAddress *addr = g_inet_address_new_loopback(G_SOCKET_FAMILY_IPV4);
+	GInetAddress *addr = g_inet_address_new_any(G_SOCKET_FAMILY_IPV4);
 	GSocketAddress *saddr = g_inet_socket_address_new(addr, 9001);
 	GError *error = NULL;
 
