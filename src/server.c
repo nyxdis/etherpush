@@ -83,7 +83,7 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 			g_critical("Failed to read filename: %s",
 					error->message);
 			g_error_free(error);
-			return;
+			return TRUE;
 		}
 
 		filename = g_path_get_basename(filename);
@@ -93,7 +93,7 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 				== 0) {
 			g_critical("Failed to read: %s", error->message);
 			g_error_free(error);
-			return;
+			return TRUE;
 		}
 
 		buffer = g_data_input_stream_read_upto(dataistream, "\003",
@@ -102,7 +102,7 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 			g_critical("Failed to read length: %s",
 					error->message);
 			g_error_free(error);
-			return;
+			return TRUE;
 		}
 		length = g_ascii_strtoll(buffer, NULL, 10);
 
@@ -111,7 +111,7 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 				== 0) {
 			g_critical("Failed to read: %s", error->message);
 			g_error_free(error);
-			return;
+			return TRUE;
 		}
 	} else {
 		g_debug("[server] protocol violation");
@@ -123,7 +123,7 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 				&error)) {
 		g_critical("Failed to write response: %s", error->message);
 		g_error_free(error);
-		return;
+		return TRUE;
 	}
 
 	buffer = incoming_dialog(filename, length);
@@ -141,21 +141,21 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 	if (buffer == NULL) {
 		g_critical("Failed to read file: %s", error->message);
 		g_error_free(error);
-		return;
+		return TRUE;
 	}
 
 	if (g_output_stream_write(ostream, buffer, strlen(buffer), NULL,
 				&error) < 0) {
 		g_critical("Failed to write file: %s", error->message);
 		g_error_free(error);
-		return;
+		return TRUE;
 	}
 
 	// consume EOT
 	if (g_data_input_stream_read_byte(dataistream, NULL, &error) == 0) {
 		g_critical("Failed to read finish byte: %s", error->message);
 		g_error_free(error);
-		return;
+		return TRUE;
 	}
 
 	g_debug("[server] file transfer done");

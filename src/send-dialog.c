@@ -22,6 +22,8 @@
 
 #include "config.h"
 
+#include "client.h"
+
 typedef struct {
 	gchar *filename;
 	GtkWidget *entry;

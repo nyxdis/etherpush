@@ -24,6 +24,7 @@
 
 #include "send-dialog.h"
 #include "status-icon.h"
+#include "server.h"
 
 int main(int argc, char *argv[])
 {
