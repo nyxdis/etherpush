@@ -111,5 +111,7 @@ static void start_transfer(G_GNUC_UNUSED GtkWidget *widget, transfer_info_t *tra
 {
 	const gchar *destination;
 	destination = gtk_entry_get_text(GTK_ENTRY(transfer_info->entry));
+	if (transfer_info->filename == NULL || strlen(destination) == 0)
+		return;
 	send_file(destination, transfer_info->filename);
 }
