@@ -1,0 +1,11 @@
+client			server
+------			------
+
+STX (002)
+filename
+GS (035)
+length (bytes)
+ETX (003)
+			ACK/NAK
+data
+EOT (005)

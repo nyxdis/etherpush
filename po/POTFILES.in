@@ -1,0 +1,3 @@
+src/etherpush.c
+src/send-dialog.c
+src/status-icon.c

@@ -1,0 +1,56 @@
+# German translation for etherpush
+# Copyright (C) Christoph Mende <mende.christoph@gmail.com>
+# This file is distributed under the same license as the etherpush package.
+#
+# Christoph Mende <mende.christoph@gmail.com>, 2011.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: etherpush git\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-05-28 14:25+0200\n"
+"PO-Revision-Date: 2011-05-28 14:07+0200\n"
+"Last-Translator: Christoph Mende <mende.christoph@gmail.com>\n"
+"Language-Team: Christoph Mende <mende.christoph@gmail.com>\n"
+"Language: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/etherpush.c:38
+#, c-format
+msgid "Error: %s\n"
+msgstr "Fehler: %s\n"
+
+#. file chooser button
+#: ../src/send-dialog.c:66
+msgid "File to send"
+msgstr "Zu sendende Datei"
+
+#. send button
+#: ../src/send-dialog.c:78
+msgid "Send"
+msgstr "Senden"
+
+#: ../src/send-dialog.c:90
+msgid "Hide"
+msgstr "Minimieren"
+
+#: ../src/send-dialog.c:108
+#, c-format
+msgid "File selected: %s"
+msgstr "Datei ausgewählt"
+
+#: ../src/send-dialog.c:115
+#, c-format
+msgid "Sending file: %s to %s"
+msgstr "Datei wird übertragen: %s an %s"
+
+#: ../src/status-icon.c:35
+msgid "Show"
+msgstr "Öffnen"
+
+#: ../src/status-icon.c:40
+msgid "Quit"
+msgstr "Beenden"
