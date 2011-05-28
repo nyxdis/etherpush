@@ -9,6 +9,7 @@ install-sh
 intltool-*.in
 missing
 mkinstalldirs
+po/*.pot
 po/Makefile*
 po/POTFILES
 po/de.gmo
