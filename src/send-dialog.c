@@ -105,13 +105,11 @@ static void file_chosen(GtkFileChooser *widget, transfer_info_t *transfer_info)
 {
 	g_free(transfer_info->filename);
 	transfer_info->filename = gtk_file_chooser_get_filename(widget);
-	g_message(_("File selected: %s"), transfer_info->filename);
 }
 
 static void start_transfer(G_GNUC_UNUSED GtkWidget *widget, transfer_info_t *transfer_info)
 {
 	const gchar *destination;
 	destination = gtk_entry_get_text(GTK_ENTRY(transfer_info->entry));
-	g_message(_("Sending file: %s to %s"), transfer_info->filename,
-			destination);
+	send_file(destination, transfer_info->filename);
 }
