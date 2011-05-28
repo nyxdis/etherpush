@@ -39,6 +39,7 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
+	start_listener();
 	send_dialog = create_send_dialog();
 	create_status_icon(send_dialog);
 
