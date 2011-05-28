@@ -43,7 +43,8 @@ void start_listener(void)
 
 	g_object_unref(addr);
 	g_object_unref(saddr);
-	g_signal_connect(service, "incoming", G_CALLBACK(listen_incoming), NULL);
+	g_signal_connect(service, "incoming", G_CALLBACK(listen_incoming),
+			NULL);
 	g_socket_service_start(service);
 	g_message("[server] started");
 }

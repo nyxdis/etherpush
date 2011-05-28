@@ -107,7 +107,8 @@ static void file_chosen(GtkFileChooser *widget, transfer_info_t *transfer_info)
 	transfer_info->filename = gtk_file_chooser_get_filename(widget);
 }
 
-static void start_transfer(G_GNUC_UNUSED GtkWidget *widget, transfer_info_t *transfer_info)
+static void start_transfer(G_GNUC_UNUSED GtkWidget *widget,
+		transfer_info_t *transfer_info)
 {
 	const gchar *destination;
 	destination = gtk_entry_get_text(GTK_ENTRY(transfer_info->entry));
