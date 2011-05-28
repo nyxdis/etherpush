@@ -21,6 +21,8 @@
 #include <glib.h>
 #include <gio/gio.h>
 
+#include "incoming-dialog.h"
+
 static gboolean listen_incoming(GSocketService*, GSocketService*, GObject*,
 		gpointer);
 
@@ -123,8 +125,9 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 		return;
 	}
 
-	file = g_file_new_for_path(filename);
+	buffer = incoming_dialog(filename, length);
 	g_free(filename);
+	file = g_file_new_for_path(buffer);
 
 	// open file for writing
 	// TODO: append_to?
