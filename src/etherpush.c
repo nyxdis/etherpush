@@ -29,6 +29,7 @@
 int main(int argc, char *argv[])
 {
 	GtkWidget *send_dialog;
+	GtkStatusIcon *status_icon;
 	GError *error = NULL;
 
 	bindtextdomain(GETTEXT_PACKAGE, LOCALEDIR);
@@ -42,9 +43,12 @@ int main(int argc, char *argv[])
 
 	start_listener();
 	send_dialog = create_send_dialog();
-	create_status_icon(send_dialog);
+	status_icon = create_status_icon(send_dialog);
 
 	gtk_main();
+
+	gtk_widget_destroy(send_dialog);
+	g_object_unref(status_icon);
 
 	return 0;
 }
