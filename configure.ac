@@ -17,6 +17,18 @@ AM_GLIB_GNU_GETTEXT
 # Checks for programs.
 AC_PROG_CC
 
+AC_MSG_CHECKING([for Win32 platform])
+case "`uname`" in
+	*MINGW*)
+		platform_win32=yes
+		;;
+	*)
+		platform_win32=no
+		;;
+esac
+AC_MSG_RESULT([$platform_win32])
+AM_CONDITIONAL(PLATFORM_WIN32, test "$platform_win32" = "yes")
+
 # Checks for libraries.
 PKG_PROG_PKG_CONFIG([0.24])
 PKG_CHECK_MODULES([gtk2], [gtk+-2.0 >= 2.16])
