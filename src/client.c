@@ -41,7 +41,7 @@ static void connected(GSocketClient *client, GAsyncResult *result,
 
 	connection = g_socket_client_connect_to_host_finish(client, result,
 			&error);
-	if (connection) {
+	if (!connection) {
 		g_critical("Connection failed: %s", error->message);
 		g_error_free(error);
 		return;
@@ -84,6 +84,7 @@ static void transfer(GIOStream *stream, const gchar *filename)
 	g_free(header);
 
 	/* check response */
+	/* TODO this blocks */
 	response = g_data_input_stream_read_byte(dataistream, NULL, &error);
 	if (response == 0) {
 		g_critical("Failed to read from input stream: %s",
