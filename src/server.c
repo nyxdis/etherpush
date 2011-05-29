@@ -118,16 +118,24 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 		return TRUE;
 	}
 
-	g_debug("put ACK");
-	if (!g_data_output_stream_put_byte(dataostream, '\006', NULL,
-				&error)) {
+	buffer = incoming_dialog(filename, length);
+	g_free(filename);
+
+	if (buffer == NULL) { // cancel transfer
+		byte = '\024'; // NAK
+	} else {
+		byte = '\006'; // ACK
+	}
+
+	if (!g_data_output_stream_put_byte(dataostream, byte, NULL, &error)) {
 		g_critical("Failed to write response: %s", error->message);
 		g_error_free(error);
 		return TRUE;
 	}
 
-	buffer = incoming_dialog(filename, length);
-	g_free(filename);
+	if (byte == '\024')
+		return TRUE;
+
 	file = g_file_new_for_path(buffer);
 
 	// open file for writing
