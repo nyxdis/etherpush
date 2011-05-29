@@ -1,4 +1,4 @@
-AM_CPPFLAGS = -DLOCALEDIR=\"$(LOCALEDIR)\"
+AM_CPPFLAGS = -DDATADIR=\""$(datadir)"\"
 bin_PROGRAMS = etherpush
 
 etherpush_SOURCES = etherpush.c \

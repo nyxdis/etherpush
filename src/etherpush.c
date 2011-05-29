@@ -31,8 +31,18 @@ int main(int argc, char *argv[])
 	GtkWidget *send_dialog;
 	GtkStatusIcon *status_icon;
 	GError *error = NULL;
+	gchar *locale_dir;
 
-	bindtextdomain(GETTEXT_PACKAGE, LOCALEDIR);
+#ifdef G_OS_WIN32
+	gchar *installdir;
+	installdir = g_win32_get_package_installation_directory_of_module(NULL);
+	locale_dir = g_build_filename(installdir, "share", "locale", NULL);
+	g_free(installdir);
+#else
+	locale_dir = g_build_filename(DATADIR, "locale", NULL);
+#endif
+	bindtextdomain(GETTEXT_PACKAGE, locale_dir);
+	g_free(locale_dir);
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 	textdomain(GETTEXT_PACKAGE);
 
