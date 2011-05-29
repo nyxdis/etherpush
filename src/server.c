@@ -46,7 +46,6 @@ void start_listener(void)
 	g_signal_connect(service, "incoming", G_CALLBACK(listen_incoming),
 			NULL);
 	g_socket_service_start(service);
-	g_message("[server] started");
 }
 
 static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
@@ -61,8 +60,6 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 	GOutputStream *ostream;
 	gchar byte, *filename, *buffer;
 	gint64 length;
-
-	g_debug("[server] file transfer incoming");
 
 	dataistream = g_data_input_stream_new(
 			g_io_stream_get_input_stream(G_IO_STREAM(connection)));
@@ -114,7 +111,6 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 			return TRUE;
 		}
 	} else {
-		g_debug("[server] protocol violation");
 		return TRUE;
 	}
 
@@ -166,6 +162,5 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 		return TRUE;
 	}
 
-	g_debug("[server] file transfer done");
 	return TRUE;
 }

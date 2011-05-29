@@ -6,7 +6,8 @@ etherpush_SOURCES = etherpush.c \
 		    status-icon.c status-icon.h \
 		    client.c client.h \
 		    server.c server.h \
-		    incoming-dialog.c incoming-dialog.h
+		    incoming-dialog.c incoming-dialog.h \
+		    error-dialog.c error-dialog.h
 
 etherpush_LDADD = $(gtk2_LIBS)
 

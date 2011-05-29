@@ -2,3 +2,5 @@ only hide the window when gtk_status_icon_is_embedded() is true
 about dialog
 progress bar
 read/write async
+filename windows
+windows -> minimize/close -> karpott

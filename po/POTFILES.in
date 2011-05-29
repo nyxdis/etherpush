@@ -1,3 +1,4 @@
+src/client.c
 src/etherpush.c
 src/incoming-dialog.c
 src/send-dialog.c

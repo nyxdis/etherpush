@@ -20,6 +20,9 @@
 #include <string.h>
 #include <glib.h>
 #include <gio/gio.h>
+#include <glib/gi18n.h>
+
+#include "error-dialog.h"
 
 static void connected(GSocketClient*, GAsyncResult*, const gchar*);
 static void transfer(GIOStream*, const gchar*);
@@ -92,13 +95,12 @@ static void transfer(GIOStream *stream, const gchar *filename)
 		g_error_free(error);
 		return;
 	} else if (response == '\025') { /* NAK */
-		g_message("[client] File transfer denied");
+		error_dialog(_("File transfer rejected"));
 		return;
 	} else if (response != '\006') { /* ACK */
-		g_warning("[client] Invalid response");
+		error_dialog(_("Received invalid response"));
 		return;
 	}
-	g_message("[client] File transfer accepted");
 
 	/* send file */
 	if (g_output_stream_write(ostream, content, length, NULL, &error) < 0) {
@@ -113,6 +115,4 @@ static void transfer(GIOStream *stream, const gchar *filename)
 		g_error_free(error);
 		return;
 	}
-
-	g_debug("[client] transfer finished");
 }
