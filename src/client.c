@@ -101,7 +101,7 @@ static void transfer(GIOStream *stream, const gchar *filename)
 	g_message("[client] File transfer accepted");
 
 	/* send file */
-	if (g_output_stream_write(ostream, file, length, NULL, &error) < 0) {
+	if (g_output_stream_write(ostream, content, length, NULL, &error) < 0) {
 		g_critical("Failed to write file: %s", error->message);
 		g_error_free(error);
 		return;
