@@ -27,6 +27,8 @@ gchar* incoming_dialog(gchar *in_filename, gsize in_length)
 
 	dialog = gtk_message_dialog_new(NULL, 0, GTK_MESSAGE_QUESTION,
 			GTK_BUTTONS_OK_CANCEL, _("Accept file transfer?"));
+	gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog),
+			"Filename: %s\nSize: %lu", in_filename, in_length);
 	if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_OK) {
 		filechooser = gtk_file_chooser_dialog_new("Save file", NULL,
 				GTK_FILE_CHOOSER_ACTION_SAVE, GTK_STOCK_CANCEL,
