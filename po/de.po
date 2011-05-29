@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: etherpush git\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-28 21:41+0200\n"
+"POT-Creation-Date: 2011-05-29 19:16+0200\n"
 "PO-Revision-Date: 2011-05-28 14:07+0200\n"
 "Last-Translator: Christoph Mende <mende.christoph@gmail.com>\n"
 "Language-Team: Christoph Mende <mende.christoph@gmail.com>\n"
@@ -18,26 +18,36 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/etherpush.c:38
+#. NAK
+#: ../src/client.c:98
+msgid "File transfer rejected"
+msgstr "Dateiübertragung abgelehnt"
+
+#. ACK
+#: ../src/client.c:101
+msgid "Received invalid response"
+msgstr "Ungültige Antwort empfangen"
+
+#: ../src/etherpush.c:50
 #, c-format
 msgid "Error: %s\n"
 msgstr "Fehler: %s\n"
 
 #: ../src/incoming-dialog.c:29
 msgid "Accept file transfer?"
-msgstr ""
+msgstr "Dateiübertragung annehmen?"
 
 #. file chooser button
-#: ../src/send-dialog.c:66
+#: ../src/send-dialog.c:68
 msgid "File to send"
 msgstr "Zu sendende Datei"
 
 #. send button
-#: ../src/send-dialog.c:78
+#: ../src/send-dialog.c:80
 msgid "Send"
 msgstr "Senden"
 
-#: ../src/send-dialog.c:90
+#: ../src/send-dialog.c:92
 msgid "Hide"
 msgstr "Minimieren"
 
