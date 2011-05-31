@@ -45,7 +45,7 @@ static void connected(GSocketClient *client, GAsyncResult *result,
 	connection = g_socket_client_connect_to_host_finish(client, result,
 			&error);
 	if (!connection) {
-		error_dialog("Connection failed: %s", error->message);
+		error_dialog(_("Connection failed: %s"), error->message);
 		g_error_free(error);
 		return;
 	}
@@ -70,7 +70,8 @@ static void transfer(GIOStream *stream, const gchar *filename)
 	file = g_file_new_for_path(filename);
 	if (!g_file_load_contents(file, NULL, &content, &length, NULL,
 				&error)) {
-		error_dialog("Failed to load file contents: %s", error->message);
+		error_dialog(_("Failed to load file contents: %s"),
+				error->message);
 		g_error_free(error);
 		return;
 	}
@@ -80,7 +81,7 @@ static void transfer(GIOStream *stream, const gchar *filename)
 	if (g_output_stream_write(ostream, header, strlen(header), NULL,
 				&error) < 0) {
 		g_free(header);
-		error_dialog("Failed to write header: %s", error->message);
+		error_dialog(_("Failed to write header: %s"), error->message);
 		g_error_free(error);
 		return;
 	}
@@ -90,7 +91,7 @@ static void transfer(GIOStream *stream, const gchar *filename)
 	/* TODO this blocks */
 	response = g_data_input_stream_read_byte(dataistream, NULL, &error);
 	if (response == 0) {
-		error_dialog("Failed to read from input stream: %s",
+		error_dialog(_("Failed to read from input stream: %s"),
 				error->message);
 		g_error_free(error);
 		return;
@@ -104,14 +105,15 @@ static void transfer(GIOStream *stream, const gchar *filename)
 
 	/* send file */
 	if (g_output_stream_write(ostream, content, length, NULL, &error) < 0) {
-		error_dialog("Failed to write file: %s", error->message);
+		error_dialog(_("Failed to write file: %s"), error->message);
 		g_error_free(error);
 		return;
 	}
 
 	/* finish transfer */
 	if (g_output_stream_write(ostream, "\005", 1, NULL, &error) < 0) {
-		error_dialog("Failed to finish byte: %s", error->message);
+		error_dialog(_("Failed to send finish byte: %s"),
+				error->message);
 		g_error_free(error);
 		return;
 	}
