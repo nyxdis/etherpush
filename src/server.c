@@ -22,6 +22,7 @@
 #include <gio/gio.h>
 
 #include "incoming-dialog.h"
+#include "error-dialog.h"
 
 static gboolean listen_incoming(GSocketService*, GSocketService*, GObject*,
 		gpointer);
@@ -36,7 +37,7 @@ void start_listener(void)
 	if (!g_socket_listener_add_address(G_SOCKET_LISTENER(service), saddr,
 			G_SOCKET_TYPE_STREAM, G_SOCKET_PROTOCOL_DEFAULT, NULL,
 			NULL, &error)) {
-		g_critical("Failed to add listener: %s", error->message);
+		error_dialog("Failed to add listener: %s", error->message);
 		g_error_free(error);
 		return;
 	}
@@ -68,7 +69,7 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 
 	byte = g_data_input_stream_read_byte(dataistream, NULL, &error);
 	if (byte == 0) {
-		g_critical("Failed to read first byte: %s", error->message);
+		error_dialog("Failed to read first byte: %s", error->message);
 		g_error_free(error);
 		return TRUE;
 	}
@@ -77,7 +78,7 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 		filename = g_data_input_stream_read_upto(dataistream, "\035",
 				-1, NULL, NULL, &error);
 		if (filename == NULL) {
-			g_critical("Failed to read filename: %s",
+			error_dialog("Failed to read filename: %s",
 					error->message);
 			g_error_free(error);
 			return TRUE;
@@ -88,7 +89,7 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 		// consume GS -> size following
 		if (g_data_input_stream_read_byte(dataistream, NULL, &error)
 				== 0) {
-			g_critical("Failed to read: %s", error->message);
+			error_dialog("Failed to read: %s", error->message);
 			g_error_free(error);
 			return TRUE;
 		}
@@ -96,7 +97,7 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 		buffer = g_data_input_stream_read_upto(dataistream, "\003",
 				-1, NULL, NULL, &error);
 		if (buffer == NULL) {
-			g_critical("Failed to read length: %s",
+			error_dialog("Failed to read length: %s",
 					error->message);
 			g_error_free(error);
 			return TRUE;
@@ -106,7 +107,7 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 		// consume ETX -> file following
 		if (g_data_input_stream_read_byte(dataistream, NULL, &error)
 				== 0) {
-			g_critical("Failed to read: %s", error->message);
+			error_dialog("Failed to read: %s", error->message);
 			g_error_free(error);
 			return TRUE;
 		}
@@ -124,7 +125,7 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 	}
 
 	if (!g_data_output_stream_put_byte(dataostream, byte, NULL, &error)) {
-		g_critical("Failed to write response: %s", error->message);
+		error_dialog("Failed to write response: %s", error->message);
 		g_error_free(error);
 		return TRUE;
 	}
@@ -143,21 +144,21 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 	buffer = g_data_input_stream_read_upto(dataistream, "\005", -1, NULL,
 			NULL, &error);
 	if (buffer == NULL) {
-		g_critical("Failed to read file: %s", error->message);
+		error_dialog("Failed to read file: %s", error->message);
 		g_error_free(error);
 		return TRUE;
 	}
 
 	if (g_output_stream_write(ostream, buffer, strlen(buffer), NULL,
 				&error) < 0) {
-		g_critical("Failed to write file: %s", error->message);
+		error_dialog("Failed to write file: %s", error->message);
 		g_error_free(error);
 		return TRUE;
 	}
 
 	// consume EOT
 	if (g_data_input_stream_read_byte(dataistream, NULL, &error) == 0) {
-		g_critical("Failed to read finish byte: %s", error->message);
+		error_dialog("Failed to read finish byte: %s", error->message);
 		g_error_free(error);
 		return TRUE;
 	}
