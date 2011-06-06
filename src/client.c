@@ -59,7 +59,7 @@ static void transfer(GIOStream *stream, const gchar *filename)
 	GDataInputStream *dataistream;
 	GFile *file;
 	GError *error = NULL;
-	gchar *header, *content, response;
+	gchar *header, *content, response, *basename;
 	gsize length;
 
 	ostream = g_io_stream_get_output_stream(stream);
@@ -77,7 +77,9 @@ static void transfer(GIOStream *stream, const gchar *filename)
 	}
 
 	/* send header */
-	header = g_strdup_printf("\002%s\035%lu\003", filename, length);
+	basename = g_path_get_basename(filename);
+	header = g_strdup_printf("\002%s\035%lu\003", basename, length);
+	g_free(basename);
 	if (g_output_stream_write(ostream, header, strlen(header), NULL,
 				&error) < 0) {
 		g_free(header);

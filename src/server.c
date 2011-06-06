@@ -70,7 +70,8 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 
 	byte = g_data_input_stream_read_byte(dataistream, NULL, &error);
 	if (byte == 0) {
-		error_dialog(_("Failed to read first byte: %s"), error->message);
+		error_dialog(_("Failed to read first byte: %s"),
+				error->message);
 		g_error_free(error);
 		return TRUE;
 	}
@@ -84,8 +85,6 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 			g_error_free(error);
 			return TRUE;
 		}
-
-		filename = g_path_get_basename(filename);
 
 		// consume GS -> size following
 		if (g_data_input_stream_read_byte(dataistream, NULL, &error)
@@ -117,7 +116,6 @@ static gboolean listen_incoming(G_GNUC_UNUSED GSocketService *service,
 	}
 
 	buffer = incoming_dialog(filename, length);
-	g_free(filename);
 
 	if (buffer == NULL) { // cancel transfer
 		byte = '\024'; // NAK
