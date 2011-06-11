@@ -20,6 +20,7 @@ AC_MSG_CHECKING([for Win32 platform])
 case "`uname`" in
 	*MINGW*)
 		platform_win32=yes
+		VALAFLAGS="-D OS_WIN32"
 		;;
 	*)
 		platform_win32=no
@@ -31,7 +32,9 @@ AM_CONDITIONAL(PLATFORM_WIN32, test "$platform_win32" = "yes")
 PKG_PROG_PKG_CONFIG([0.24])
 PKG_CHECK_MODULES([gtk2], [gtk+-2.0 >= 2.16])
 
-VALAFLAGS="--pkg gtk+-2.0"
+VALAFLAGS+=" --pkg gtk+-2.0 \
+	--pkg config \
+	--vapidir ../vapi"
 AC_SUBST(VALAFLAGS)
 
 AC_CONFIG_FILES([Makefile src/Makefile po/Makefile.in])

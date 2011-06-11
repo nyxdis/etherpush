@@ -4,6 +4,7 @@ Makefile.in
 aclocal.m4
 autom4te.cache/
 config.*
+!vapi/*
 configure
 depcomp
 install-sh
