@@ -9,6 +9,13 @@ etherpush_SOURCES = etherpush.c \
 		    incoming-dialog.vala \
 		    error-dialog.c
 
+noinst_HEADERS = send-dialog.h \
+		 status-icon.h \
+		 client.h \
+		 server.h \
+		 incoming-dialog.h \
+		 error-dialog.h
+
 etherpush_LDADD = $(gtk2_LIBS)
 
 etherpush_CFLAGS = $(gtk2_CFLAGS)
