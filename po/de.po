@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: etherpush git\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-31 12:21+0200\n"
-"PO-Revision-Date: 2011-05-31 12:22+0200\n"
+"POT-Creation-Date: 2011-06-12 00:38+0200\n"
+"PO-Revision-Date: 2011-06-12 00:38+0200\n"
 "Last-Translator: Christoph Mende <mende.christoph@gmail.com>\n"
 "Language-Team: Christoph Mende <mende.christoph@gmail.com>\n"
 "Language: German\n"
@@ -27,32 +27,32 @@ msgstr "Verbindung Fehlgeschlagen: %s"
 msgid "Failed to load file contents: %s"
 msgstr "Datei konnte nicht geladen werden: %s"
 
-#: ../src/client.c:84
+#: ../src/client.c:86
 #, c-format
 msgid "Failed to write header: %s"
 msgstr "Übertragung konnte nicht gestartet werden: %s"
 
-#: ../src/client.c:94
+#: ../src/client.c:96
 #, c-format
 msgid "Failed to read from input stream: %s"
 msgstr "Konnte nicht von der Gegenseite lesen: %s"
 
 #. NAK
-#: ../src/client.c:99
+#: ../src/client.c:101
 msgid "File transfer rejected"
 msgstr "Dateiübertragung abgelehnt"
 
 #. ACK
-#: ../src/client.c:102
+#: ../src/client.c:104
 msgid "Received invalid response"
 msgstr "Ungültige Antwort empfangen"
 
-#: ../src/client.c:108
+#: ../src/client.c:110 ../src/server.c:153
 #, c-format
 msgid "Failed to write file: %s"
 msgstr "Datei konnte nicht gesendet werden: %s"
 
-#: ../src/client.c:115
+#: ../src/client.c:117
 #, c-format
 msgid "Failed to send finish byte: %s"
 msgstr "Übertragung konnte nicht abgeschlossen werden: %s"
@@ -62,9 +62,22 @@ msgstr "Übertragung konnte nicht abgeschlossen werden: %s"
 msgid "Error: %s\n"
 msgstr "Fehler: %s\n"
 
-#: ../src/incoming-dialog.c:29
+#: ../src/incoming-dialog.vala:30
 msgid "Accept file transfer?"
 msgstr "Dateiübertragung annehmen?"
+
+#: ../src/incoming-dialog.vala:31
+#, c-format
+msgid ""
+"Filename %s\n"
+"Size: %lu"
+msgstr ""
+"Dateiname: %s\n"
+"Größe: %lu"
+
+#: ../src/incoming-dialog.vala:33
+msgid "Save file"
+msgstr "Datei speichern"
 
 #. file chooser button
 #: ../src/send-dialog.c:68
@@ -79,6 +92,46 @@ msgstr "Senden"
 #: ../src/send-dialog.c:92
 msgid "Hide"
 msgstr "Minimieren"
+
+#: ../src/server.c:41
+#, c-format
+msgid "Failed to add listener: %s"
+msgstr "Übertragung konnte nicht gestartet werden: %s"
+
+#: ../src/server.c:73
+#, c-format
+msgid "Failed to read first byte: %s"
+msgstr "Übertragung konnte nicht abgeschlossen werden: %s"
+
+#: ../src/server.c:83
+#, c-format
+msgid "Failed to read filename: %s"
+msgstr "Datei konnte nicht gesendet werden: %s"
+
+#: ../src/server.c:92 ../src/server.c:110
+#, c-format
+msgid "Failed to read: %s"
+msgstr "Übertragung konnte nicht gestartet werden: %s"
+
+#: ../src/server.c:100
+#, c-format
+msgid "Failed to read length: %s"
+msgstr "Datei konnte nicht gesendet werden: %s"
+
+#: ../src/server.c:127
+#, c-format
+msgid "Failed to write response: %s"
+msgstr "Übertragung konnte nicht gestartet werden: %s"
+
+#: ../src/server.c:146
+#, c-format
+msgid "Failed to read file: %s"
+msgstr "Datei konnte nicht gesendet werden: %s"
+
+#: ../src/server.c:160
+#, c-format
+msgid "Failed to read finish byte: %s"
+msgstr "Übertragung konnte nicht abgeschlossen werden: %s"
 
 #: ../src/status-icon.c:35
 msgid "Show"
