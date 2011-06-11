@@ -1,6 +1,3 @@
-#                                               -*- Autoconf -*-
-# Process this file with autoconf to produce a configure script.
-
 AC_PREREQ([2.63])
 AC_INIT([etherpush], [1], [mende.christoph@gmail.com])
 AC_CONFIG_SRCDIR([src/etherpush.c])
@@ -14,8 +11,10 @@ AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"],
 		   [The domain to use with gettext])
 AM_GLIB_GNU_GETTEXT
 
-# Checks for programs.
 AC_PROG_CC
+
+AC_PATH_PROG(VALAC, valac, valac)
+AC_SUBST(VALAC)
 
 AC_MSG_CHECKING([for Win32 platform])
 case "`uname`" in
@@ -29,15 +28,11 @@ esac
 AC_MSG_RESULT([$platform_win32])
 AM_CONDITIONAL(PLATFORM_WIN32, test "$platform_win32" = "yes")
 
-# Checks for libraries.
 PKG_PROG_PKG_CONFIG([0.24])
 PKG_CHECK_MODULES([gtk2], [gtk+-2.0 >= 2.16])
 
-# Checks for header files.
-
-# Checks for typedefs, structures, and compiler characteristics.
-
-# Checks for library functions.
+VALAFLAGS="--pkg gtk+-2.0"
+AC_SUBST(VALAFLAGS)
 
 AC_CONFIG_FILES([Makefile src/Makefile po/Makefile.in])
 AC_OUTPUT

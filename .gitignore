@@ -1,3 +1,4 @@
+*.stamp
 Makefile
 Makefile.in
 aclocal.m4
@@ -19,4 +20,5 @@ src/Makefile
 src/Makefile.in
 src/etherpush
 src/etherpush-*.o
+src/incoming-dialog.c
 stamp-h1
