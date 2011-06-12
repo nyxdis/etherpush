@@ -2,5 +2,6 @@
 namespace Config {
 	public const string GETTEXT_PACKAGE;
 	public const string PACKAGE_NAME;
+	public const string PACKAGE_STRING;
 	public const string VERSION;
 }

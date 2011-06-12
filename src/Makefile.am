@@ -3,7 +3,7 @@ bin_PROGRAMS = etherpush
 
 etherpush_SOURCES = etherpush.c \
 		    send-dialog.vala \
-		    status-icon.c \
+		    status-icon.vala \
 		    client.vala \
 		    server.vala \
 		    incoming-dialog.vala \
