@@ -1,6 +1,6 @@
 AC_PREREQ([2.63])
 AC_INIT([etherpush], [1], [mende.christoph@gmail.com])
-AC_CONFIG_SRCDIR([src/etherpush.c])
+AC_CONFIG_SRCDIR([src/etherpush.vala])
 AC_CONFIG_HEADERS([config.h])
 AM_INIT_AUTOMAKE([dist-bzip2 foreign])
 IT_PROG_INTLTOOL([0.35.0])

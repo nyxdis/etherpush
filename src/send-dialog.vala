@@ -25,7 +25,7 @@ struct TransferInfo {
 	Entry entry;
 }
 
-Widget create_send_dialog()
+Window create_send_dialog()
 {
 	var transfer_info = TransferInfo();
 	transfer_info.filename = null;
