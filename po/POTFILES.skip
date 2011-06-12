@@ -1,1 +1,5 @@
+src/client.c
 src/incoming-dialog.c
+src/send-dialog.c
+src/server.c
+src/status-icon.c
