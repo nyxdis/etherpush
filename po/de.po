@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: etherpush git\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-12 00:38+0200\n"
-"PO-Revision-Date: 2011-06-12 00:38+0200\n"
+"POT-Creation-Date: 2011-06-13 00:11+0200\n"
+"PO-Revision-Date: 2011-06-13 00:15+0200\n"
 "Last-Translator: Christoph Mende <mende.christoph@gmail.com>\n"
 "Language-Team: Christoph Mende <mende.christoph@gmail.com>\n"
 "Language: German\n"
@@ -17,50 +17,27 @@ msgstr ""
 "Content-Transfer-Encoding: UTF-8\n"
 "Plural-Forms: \n"
 
-#: ../src/client.c:48
-#, c-format
-msgid "Connection failed: %s"
-msgstr "Verbindung Fehlgeschlagen: %s"
+#: ../src/client.vala:33
+msgid "Connection failed: $(e.message)"
+msgstr "Verbindung Fehlgeschlagen: $(e.message)"
 
-#: ../src/client.c:73
-#, c-format
-msgid "Failed to load file contents: %s"
-msgstr "Datei konnte nicht geladen werden: %s"
-
-#: ../src/client.c:86
-#, c-format
-msgid "Failed to write header: %s"
-msgstr "Übertragung konnte nicht gestartet werden: %s"
-
-#: ../src/client.c:96
-#, c-format
-msgid "Failed to read from input stream: %s"
-msgstr "Konnte nicht von der Gegenseite lesen: %s"
+#: ../src/client.vala:51
+msgid "Failed to load file contents: $(e.message)"
+msgstr "Datei konnte nicht geladen werden: $(e.message)"
 
 #. NAK
-#: ../src/client.c:101
+#: ../src/client.vala:62
 msgid "File transfer rejected"
 msgstr "Dateiübertragung abgelehnt"
 
 #. ACK
-#: ../src/client.c:104
+#: ../src/client.vala:65
 msgid "Received invalid response"
 msgstr "Ungültige Antwort empfangen"
 
-#: ../src/client.c:110 ../src/server.c:153
-#, c-format
-msgid "Failed to write file: %s"
-msgstr "Datei konnte nicht gesendet werden: %s"
-
-#: ../src/client.c:117
-#, c-format
-msgid "Failed to send finish byte: %s"
-msgstr "Übertragung konnte nicht abgeschlossen werden: %s"
-
-#: ../src/etherpush.c:50
-#, c-format
-msgid "Error: %s\n"
-msgstr "Fehler: %s\n"
+#: ../src/client.vala:72
+msgid "Failed send file: $(e.message)"
+msgstr "Datei konnte nicht gesendet werden: $(e.message)"
 
 #: ../src/incoming-dialog.vala:30
 msgid "Accept file transfer?"
@@ -80,63 +57,43 @@ msgid "Save file"
 msgstr "Datei speichern"
 
 #. file chooser button
-#: ../src/send-dialog.c:68
+#: ../src/send-dialog.vala:58
 msgid "File to send"
 msgstr "Zu sendende Datei"
 
 #. send button
-#: ../src/send-dialog.c:80
+#: ../src/send-dialog.vala:66
 msgid "Send"
 msgstr "Senden"
 
-#: ../src/send-dialog.c:92
+#: ../src/send-dialog.vala:77
 msgid "Hide"
 msgstr "Minimieren"
 
-#: ../src/server.c:41
-#, c-format
-msgid "Failed to add listener: %s"
-msgstr "Übertragung konnte nicht gestartet werden: %s"
+#: ../src/server.vala:32
+msgid "Failed to add listener: $(e.message)"
+msgstr "Empfänger konnte nicht gestartet werden: $(e.message)"
 
-#: ../src/server.c:73
-#, c-format
-msgid "Failed to read first byte: %s"
-msgstr "Übertragung konnte nicht abgeschlossen werden: %s"
+#: ../src/server.vala:66 ../src/server.vala:102 ../src/server.vala:117
+msgid "Failed to read: $(e.message)"
+msgstr "Fehler beim Lesen: $(e.message)"
 
-#: ../src/server.c:83
-#, c-format
-msgid "Failed to read filename: %s"
-msgstr "Datei konnte nicht gesendet werden: %s"
+#: ../src/server.vala:81
+msgid "Failed to write: $(e.message)"
+msgstr "Fehler beim Schreiben: $(e.message)"
 
-#: ../src/server.c:92 ../src/server.c:110
-#, c-format
-msgid "Failed to read: %s"
-msgstr "Übertragung konnte nicht gestartet werden: %s"
+#: ../src/server.vala:95
+msgid "Failed to open file for writing: $(e.message)"
+msgstr "Datei konnte nicht zum Schreiben geöffnet werden: $(e.message)"
 
-#: ../src/server.c:100
-#, c-format
-msgid "Failed to read length: %s"
-msgstr "Datei konnte nicht gesendet werden: %s"
+#: ../src/server.vala:109
+msgid "Failed to write to file: $(e.message)"
+msgstr "Datei konnte nicht geschrieben werden: $(e.message)"
 
-#: ../src/server.c:127
-#, c-format
-msgid "Failed to write response: %s"
-msgstr "Übertragung konnte nicht gestartet werden: %s"
-
-#: ../src/server.c:146
-#, c-format
-msgid "Failed to read file: %s"
-msgstr "Datei konnte nicht gesendet werden: %s"
-
-#: ../src/server.c:160
-#, c-format
-msgid "Failed to read finish byte: %s"
-msgstr "Übertragung konnte nicht abgeschlossen werden: %s"
-
-#: ../src/status-icon.c:35
+#: ../src/status-icon.vala:30
 msgid "Show"
 msgstr "Öffnen"
 
-#: ../src/status-icon.c:40
+#: ../src/status-icon.vala:34
 msgid "Quit"
 msgstr "Beenden"
