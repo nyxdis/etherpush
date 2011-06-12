@@ -5,7 +5,7 @@ etherpush_SOURCES = etherpush.c \
 		    send-dialog.c \
 		    status-icon.c \
 		    client.vala \
-		    server.c \
+		    server.vala \
 		    incoming-dialog.vala \
 		    error-dialog.c
 
