@@ -10,11 +10,7 @@ etherpush_SOURCES = etherpush.c \
 		    error-dialog.vala
 
 noinst_HEADERS = send-dialog.h \
-		 status-icon.h \
-		 client.h \
-		 server.h \
-		 incoming-dialog.h \
-		 error-dialog.h
+		 status-icon.h
 
 etherpush_LDADD = $(gtk2_LIBS)
 

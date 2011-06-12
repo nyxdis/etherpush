@@ -1,10 +1,10 @@
+!vapi/*
 *.stamp
 Makefile
 Makefile.in
 aclocal.m4
 autom4te.cache/
 config.*
-!vapi/*
 configure
 depcomp
 install-sh
@@ -19,7 +19,11 @@ po/stamp-it
 src/.deps/
 src/Makefile
 src/Makefile.in
+src/client.c
+src/error-dialog.c
 src/etherpush
 src/etherpush-*.o
 src/incoming-dialog.c
+src/send-dialog.c
+src/server.c
 stamp-h1
