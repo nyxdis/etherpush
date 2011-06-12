@@ -2,12 +2,12 @@ AM_CPPFLAGS = -DDATADIR=\""$(datadir)"\"
 bin_PROGRAMS = etherpush
 
 etherpush_SOURCES = etherpush.c \
-		    send-dialog.c \
+		    send-dialog.vala \
 		    status-icon.c \
 		    client.vala \
 		    server.vala \
 		    incoming-dialog.vala \
-		    error-dialog.c
+		    error-dialog.vala
 
 noinst_HEADERS = send-dialog.h \
 		 status-icon.h \

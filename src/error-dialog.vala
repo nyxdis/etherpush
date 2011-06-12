@@ -17,23 +17,11 @@
  */
 
 
-#include <gtk/gtk.h>
+using Gtk;
 
-void error_dialog(const gchar *fmt, ...)
+void error_dialog(string message)
 {
-	GtkWidget *dialog;
-	gchar *message;
-	va_list ap;
-
-	va_start(ap, fmt);
-	message = g_strdup_vprintf(fmt, ap);
-	va_end(ap);
-
-	dialog = gtk_message_dialog_new(NULL, 0, GTK_MESSAGE_ERROR,
-			GTK_BUTTONS_CLOSE, "%s", message);
-	gtk_widget_show(dialog);
-	g_free(message);
-
-	g_signal_connect_swapped(dialog, "response",
-			G_CALLBACK(gtk_widget_destroy), dialog);
+	var dialog = new MessageDialog(null, 0, MessageType.ERROR, ButtonsType.CLOSE, "%s", message);
+	dialog.show();
+	dialog.response.connect(() => dialog.destroy());
 }
