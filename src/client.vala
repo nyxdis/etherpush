@@ -17,6 +17,11 @@
  */
 
 
+using Config;
+
+// force #include "config.h"
+private const string _client_version = VERSION;
+
 async void send_file(string host, string filename)
 {
 	var client = new SocketClient();

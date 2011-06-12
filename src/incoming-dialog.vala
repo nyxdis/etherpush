@@ -21,7 +21,7 @@ using Config;
 using Gtk;
 
 // force #include "config.h"
-private const string incoming_dialog_version = VERSION;
+private const string _incoming_dialog_version = VERSION;
 
 string? incoming_dialog(string in_filename, ssize_t in_length)
 {

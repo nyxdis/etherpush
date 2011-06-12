@@ -17,6 +17,11 @@
  */
 
 
+using Config;
+
+// force #include "config.h"
+private const string _server_version = VERSION;
+
 void start_listener()
 {
 	var service = new SocketService();
