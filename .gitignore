@@ -1,6 +1,4 @@
-!vapi/*
-*.o
-*.stamp
+!vapi
 Makefile
 Makefile.in
 aclocal.m4
@@ -13,13 +11,15 @@ intltool-*.in
 missing
 mkinstalldirs
 po/*.gmo
-po/*.pot
 po/Makefile*
 po/POTFILES
+po/etherpush.pot
 po/stamp-it
 src/*.c
+src/*.o
 src/.deps/
 src/Makefile
 src/Makefile.in
 src/etherpush
+src/etherpush_vala.stamp
 stamp-h1
