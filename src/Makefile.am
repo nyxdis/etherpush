@@ -4,7 +4,7 @@ bin_PROGRAMS = etherpush
 etherpush_SOURCES = etherpush.c \
 		    send-dialog.c \
 		    status-icon.c \
-		    client.c \
+		    client.vala \
 		    server.c \
 		    incoming-dialog.vala \
 		    error-dialog.c
