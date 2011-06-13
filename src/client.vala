@@ -53,9 +53,8 @@ void transfer(SocketConnection connection, string filename)
 	}
 
 	var basename = Path.get_basename(filename);
-	var header = @"\002$basename\035$length";
 	try {
-		ostream.write(header.data);
+		ostream.write(@"\002$basename\035$length".data);
 
 		var response = istream.read_byte();
 		if (response == 25) { /* NAK */
