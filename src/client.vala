@@ -37,7 +37,7 @@ async void send_file(string host, string filename)
 	transfer(connection, filename);
 }
 
-void transfer(SocketConnection connection, string filename)
+async void transfer(SocketConnection connection, string filename)
 {
 	var ostream = connection.get_output_stream();
 	var istream = new DataInputStream(connection.get_input_stream());
@@ -54,7 +54,7 @@ void transfer(SocketConnection connection, string filename)
 
 	var basename = Path.get_basename(filename);
 	try {
-		ostream.write(@"\002$basename\035$length".data);
+		yield ostream.write_async(@"\002$basename\035$length".data);
 
 		var response = istream.read_byte();
 		if (response == 25) { /* NAK */
@@ -65,10 +65,10 @@ void transfer(SocketConnection connection, string filename)
 			return;
 		}
 
-		ostream.write(contents.data);
-		ostream.write("\005".data);
-	} catch (Error e) {
-		error_dialog(_(@"Failed send file: $(e.message)"));
+		yield ostream.write_async(contents.data);
+		yield ostream.write_async("\005".data);
+	} catch (Error err) {
+		error_dialog(_(@"Failed send file: $(err.message)"));
 		return;
 	}
 }
