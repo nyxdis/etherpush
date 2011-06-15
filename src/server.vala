@@ -29,7 +29,7 @@ void start_listener()
 	try {
 		service.add_inet_port(9001, null);
 	} catch (Error e) {
-		error_dialog(_(@"Failed to add listener: $(e.message)"));
+		error_dialog(_("Failed to add listener: %s".printf(e.message)));
 		return;
 	}
 
@@ -63,7 +63,7 @@ bool listen_incoming(SocketConnection conn)
 			return true;
 		}
 	} catch (Error e) {
-		error_dialog(_(@"Failed to read: $(e.message)"));
+		error_dialog(_("Failed to read: %s".printf(e.message)));
 		return true;
 	}
 
@@ -78,7 +78,7 @@ bool listen_incoming(SocketConnection conn)
 	try {
 		ostream.put_byte(byte);
 	} catch (Error e) {
-		error_dialog(_(@"Failed to write: $(e.message)"));
+		error_dialog(_("Failed to write: %s".printf(e.message)));
 		return true;
 	}
 
@@ -92,21 +92,21 @@ bool listen_incoming(SocketConnection conn)
 	try {
 		fileostream = file.create(FileCreateFlags.REPLACE_DESTINATION);
 	} catch (Error e) {
-		error_dialog(_(@"Failed to open file for writing: $(e.message)"));
+		error_dialog(_("Failed to open file for writing: %s".printf(e.message)));
 		return true;
 	}
 
 	try {
 		buffer = istream.read_upto("\005", -1, null);
 	} catch (Error e) {
-		error_dialog(_(@"Failed to read: $(e.message)"));
+		error_dialog(_("Failed to read: %s".printf(e.message)));
 		return true;
 	}
 
 	try {
 		fileostream.write(buffer.data);
 	} catch (Error e) {
-		error_dialog(_(@"Failed to write to file: $(e.message)"));
+		error_dialog(_("Failed to write to file: %s".printf(e.message)));
 		return true;
 	}
 
@@ -114,7 +114,7 @@ bool listen_incoming(SocketConnection conn)
 	try {
 		istream.read_byte();
 	} catch (Error e) {
-		error_dialog(_(@"Failed to read: $(e.message)"));
+		error_dialog(_("Failed to read: %s".printf(e.message)));
 		return true;
 	}
 

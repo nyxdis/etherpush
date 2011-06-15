@@ -30,7 +30,7 @@ async void send_file(string host, string filename)
 	try {
 		connection = yield client.connect_to_host_async(host, 9001, null);
 	} catch (Error e) {
-		error_dialog(_(@"Connection failed: $(e.message)"));
+		error_dialog(_("Connection failed: %s".printf(e.message)));
 		return;
 	}
 
@@ -48,7 +48,7 @@ async void transfer(SocketConnection connection, string filename)
 	try {
 		file.load_contents(null, out contents);
 	} catch (Error e) {
-		error_dialog(_(@"Failed to load file contents: $(e.message)"));
+		error_dialog(_("Failed to load file contents: %s".printf(e.message)));
 		return;
 	}
 
@@ -68,7 +68,7 @@ async void transfer(SocketConnection connection, string filename)
 		yield ostream.write_async(contents.data);
 		yield ostream.write_async("\005".data);
 	} catch (Error err) {
-		error_dialog(_(@"Failed send file: $(err.message)"));
+		error_dialog(_("Failed to send file: %s".printf(err.message)));
 		return;
 	}
 }

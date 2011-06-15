@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: etherpush git\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-15 09:25+0200\n"
-"PO-Revision-Date: 2011-06-15 09:26+0200\n"
+"POT-Creation-Date: 2011-06-15 11:01+0200\n"
+"PO-Revision-Date: 2011-06-15 11:02+0200\n"
 "Last-Translator: Christoph Mende <mende.christoph@gmail.com>\n"
 "Language-Team: Christoph Mende <mende.christoph@gmail.com>\n"
 "Language: German\n"
@@ -18,12 +18,14 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: ../src/client.vala:33
-msgid "Connection failed: $(e.message)"
-msgstr "Verbindung Fehlgeschlagen: $(e.message)"
+#, c-format
+msgid "Connection failed: %s"
+msgstr "Verbindung Fehlgeschlagen: %s"
 
 #: ../src/client.vala:51
-msgid "Failed to load file contents: $(e.message)"
-msgstr "Datei konnte nicht geladen werden: $(e.message)"
+#, c-format
+msgid "Failed to load file contents: %s"
+msgstr "Datei konnte nicht geladen werden: %s"
 
 #. NAK
 #: ../src/client.vala:61
@@ -36,8 +38,9 @@ msgid "Received invalid response"
 msgstr "Ungültige Antwort empfangen"
 
 #: ../src/client.vala:71
-msgid "Failed send file: $(err.message)"
-msgstr "Datei konnte nicht gesendet werden: $(err.message)"
+#, c-format
+msgid "Failed to send file: %s"
+msgstr "Datei konnte nicht gesendet werden: %s"
 
 #: ../src/incoming-dialog.vala:30
 msgid "Accept file transfer?"
@@ -71,24 +74,29 @@ msgid "Hide"
 msgstr "Minimieren"
 
 #: ../src/server.vala:32
-msgid "Failed to add listener: $(e.message)"
-msgstr "Empfänger konnte nicht gestartet werden: $(e.message)"
+#, c-format
+msgid "Failed to add listener: %s"
+msgstr "Empfänger konnte nicht gestartet werden: %s"
 
 #: ../src/server.vala:66 ../src/server.vala:102 ../src/server.vala:117
-msgid "Failed to read: $(e.message)"
-msgstr "Fehler beim Lesen: $(e.message)"
+#, c-format
+msgid "Failed to read: %s"
+msgstr "Fehler beim Lesen: %s"
 
 #: ../src/server.vala:81
-msgid "Failed to write: $(e.message)"
-msgstr "Fehler beim Schreiben: $(e.message)"
+#, c-format
+msgid "Failed to write: %s"
+msgstr "Fehler beim Schreiben: %s"
 
 #: ../src/server.vala:95
-msgid "Failed to open file for writing: $(e.message)"
-msgstr "Datei konnte nicht zum Schreiben geöffnet werden: $(e.message)"
+#, c-format
+msgid "Failed to open file for writing: %s"
+msgstr "Datei konnte nicht zum Schreiben geöffnet werden: %s"
 
 #: ../src/server.vala:109
-msgid "Failed to write to file: $(e.message)"
-msgstr "Datei konnte nicht geschrieben werden: $(e.message)"
+#, c-format
+msgid "Failed to write to file: %s"
+msgstr "Datei konnte nicht geschrieben werden: %s"
 
 #: ../src/status-icon.vala:30
 msgid "Show"
