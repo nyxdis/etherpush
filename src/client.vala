@@ -54,7 +54,7 @@ async void transfer(SocketConnection connection, string filename)
 
 	var basename = Path.get_basename(filename);
 	try {
-		yield ostream.write_async(@"\002$basename\035$length".data);
+		yield ostream.write_async(@"\002$basename\035$length\003".data);
 
 		var response = istream.read_byte();
 		if (response == 25) { /* NAK */
