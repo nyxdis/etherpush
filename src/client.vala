@@ -44,9 +44,11 @@ async void transfer(SocketConnection connection, string filename)
 
 	var file = File.new_for_path(filename);
 	string contents;
-	size_t length = 0;
+	int64 length;
 	try {
 		file.load_contents(null, out contents);
+		var file_info = file.query_info(FILE_ATTRIBUTE_STANDARD_SIZE, 0, null);
+		length = file_info.get_size();
 	} catch (Error e) {
 		error_dialog(_("Failed to load file contents: %s".printf(e.message)));
 		return;
