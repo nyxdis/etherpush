@@ -42,15 +42,13 @@ async void transfer(SocketConnection connection, string filename)
 	var ostream = connection.get_output_stream();
 	var istream = new DataInputStream(connection.get_input_stream());
 
-	var file = File.new_for_path(filename);
-	string contents;
 	int64 length;
 	try {
-		file.load_contents(null, out contents);
+		var file = File.new_for_path(filename);
 		var file_info = file.query_info(FILE_ATTRIBUTE_STANDARD_SIZE, 0, null);
 		length = file_info.get_size();
 	} catch (Error e) {
-		error_dialog(_("Failed to load file contents: %s".printf(e.message)));
+		error_dialog(_("Failed to load file: %s".printf(e.message)));
 		return;
 	}
 
@@ -67,7 +65,14 @@ async void transfer(SocketConnection connection, string filename)
 			return;
 		}
 
-		yield ostream.write_async(contents.data);
+		var file_stream = FileStream.open(filename, "rb");
+		var data = new uint8[4096];
+		while (!file_stream.eof()) {
+			var len = file_stream.read(data);
+			data[len] = 0;
+			yield ostream.write_async(data);
+		}
+
 		yield ostream.write_async("\005".data);
 	} catch (Error err) {
 		error_dialog(_("Failed to send file: %s".printf(err.message)));
