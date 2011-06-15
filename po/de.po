@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: etherpush git\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-13 00:11+0200\n"
-"PO-Revision-Date: 2011-06-13 00:15+0200\n"
+"POT-Creation-Date: 2011-06-15 09:25+0200\n"
+"PO-Revision-Date: 2011-06-15 09:26+0200\n"
 "Last-Translator: Christoph Mende <mende.christoph@gmail.com>\n"
 "Language-Team: Christoph Mende <mende.christoph@gmail.com>\n"
 "Language: German\n"
@@ -26,18 +26,18 @@ msgid "Failed to load file contents: $(e.message)"
 msgstr "Datei konnte nicht geladen werden: $(e.message)"
 
 #. NAK
-#: ../src/client.vala:62
+#: ../src/client.vala:61
 msgid "File transfer rejected"
 msgstr "Dateiübertragung abgelehnt"
 
 #. ACK
-#: ../src/client.vala:65
+#: ../src/client.vala:64
 msgid "Received invalid response"
 msgstr "Ungültige Antwort empfangen"
 
-#: ../src/client.vala:72
-msgid "Failed send file: $(e.message)"
-msgstr "Datei konnte nicht gesendet werden: $(e.message)"
+#: ../src/client.vala:71
+msgid "Failed send file: $(err.message)"
+msgstr "Datei konnte nicht gesendet werden: $(err.message)"
 
 #: ../src/incoming-dialog.vala:30
 msgid "Accept file transfer?"
