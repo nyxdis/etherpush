@@ -8,4 +8,4 @@ length (bytes)
 ETX (003)
 			ACK/NAK
 data
-EOT (005)
+EOT (004)

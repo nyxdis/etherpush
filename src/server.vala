@@ -97,7 +97,7 @@ bool listen_incoming(SocketConnection conn)
 	}
 
 	try {
-		buffer = istream.read_upto("\005", -1, null);
+		buffer = istream.read_upto("\004", -1, null);
 	} catch (Error e) {
 		error_dialog(_("Failed to read: %s".printf(e.message)));
 		return true;

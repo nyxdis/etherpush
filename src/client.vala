@@ -77,7 +77,7 @@ async void transfer(SocketConnection connection, string filename)
 			yield ostream.write_async(data);
 		}
 
-		yield ostream.write_async("\005".data);
+		yield ostream.write_async("\004".data);
 	} catch (Error err) {
 		error_dialog(_("Failed to send file: %s".printf(err.message)));
 		return;
