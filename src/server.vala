@@ -33,11 +33,11 @@ void start_listener()
 		return;
 	}
 
-	service.incoming.connect(listen_incoming);
+	service.incoming.connect((src) => { listen_incoming(src); return true; });
 	service.start();
 }
 
-bool listen_incoming(SocketConnection conn)
+async void listen_incoming(SocketConnection conn)
 {
 	var istream = new DataInputStream(conn.get_input_stream());
 	var ostream = new DataOutputStream(conn.get_output_stream());
@@ -60,11 +60,11 @@ bool listen_incoming(SocketConnection conn)
 			// consume ETX -> file following
 			istream.read_byte();
 		} else {
-			return true;
+			return;
 		}
-	} catch (Error e) {
-		error_dialog(_("Failed to read: %s".printf(e.message)));
-		return true;
+	} catch (Error e0) {
+		error_dialog(_("Failed to read: %s".printf(e0.message)));
+		return;
 	}
 
 	buffer = incoming_dialog(filename, filesize);
@@ -77,13 +77,13 @@ bool listen_incoming(SocketConnection conn)
 
 	try {
 		ostream.put_byte(byte);
-	} catch (Error e) {
-		error_dialog(_("Failed to write: %s".printf(e.message)));
-		return true;
+	} catch (Error e1) {
+		error_dialog(_("Failed to write: %s".printf(e1.message)));
+		return;
 	}
 
 	if (byte == 24)
-		return true;
+		return;
 
 	var file = File.new_for_path(buffer);
 
@@ -91,9 +91,9 @@ bool listen_incoming(SocketConnection conn)
 	FileOutputStream fileostream;
 	try {
 		fileostream = file.replace(null, false, FileCreateFlags.REPLACE_DESTINATION);
-	} catch (Error e) {
-		error_dialog(_("Failed to open file for writing: %s".printf(e.message)));
-		return true;
+	} catch (Error e2) {
+		error_dialog(_("Failed to open file for writing: %s".printf(e2.message)));
+		return;
 	}
 
 	try {
@@ -101,20 +101,20 @@ bool listen_incoming(SocketConnection conn)
 
 		while (read < filesize) {
 			var data = new uint8[4096];
-			var length = istream.read(data);
+			var length = yield istream.read_async(data);
 			read += (int) length;
 
 			try {
 				fileostream.write(data[0:length]);
-			} catch (Error e) {
-				error_dialog(_("Failed to write to file: %s".printf(e.message)));
-				return true;
+			} catch (Error e3) {
+				error_dialog(_("Failed to write to file: %s".printf(e3.message)));
+				return;
 			}
 		}
-	} catch (Error e) {
-		error_dialog(_("Failed to read: %s".printf(e.message)));
-		return true;
+	} catch (Error e4) {
+		error_dialog(_("Failed to read: %s".printf(e4.message)));
+		return;
 	}
 
-	return true;
+	return;
 }

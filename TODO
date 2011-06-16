@@ -1,5 +1,4 @@
 only hide the window when gtk_status_icon_is_embedded() is true
 about dialog
 progress bar
-read/write async
 fix close on windows (destroys window instead of hiding)
