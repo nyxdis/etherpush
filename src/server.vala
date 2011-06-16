@@ -103,10 +103,9 @@ bool listen_incoming(SocketConnection conn)
 			var data = new uint8[4096];
 			var length = istream.read(data);
 			read += (int) length;
-			debug("read %ld bytes (%d overall)\n", length, read);
 
 			try {
-				fileostream.write(data);
+				fileostream.write(data[0:length]);
 			} catch (Error e) {
 				error_dialog(_("Failed to write to file: %s".printf(e.message)));
 				return true;

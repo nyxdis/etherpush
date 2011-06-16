@@ -42,11 +42,11 @@ async void transfer(SocketConnection connection, string filename)
 	var ostream = connection.get_output_stream();
 	var istream = new DataInputStream(connection.get_input_stream());
 
-	int64 length;
+	int64 filesize;
 	try {
 		var file = File.new_for_path(filename);
 		var file_info = file.query_info(FILE_ATTRIBUTE_STANDARD_SIZE, 0, null);
-		length = file_info.get_size();
+		filesize = file_info.get_size();
 	} catch (Error e) {
 		error_dialog(_("Failed to load file: %s".printf(e.message)));
 		return;
@@ -54,7 +54,7 @@ async void transfer(SocketConnection connection, string filename)
 
 	var basename = Path.get_basename(filename);
 	try {
-		yield ostream.write_async(@"\002$basename\035$length\003".data);
+		yield ostream.write_async(@"\002$basename\035$filesize\003".data);
 
 		var response = istream.read_byte();
 		if (response == 25) { /* NAK */
@@ -70,11 +70,10 @@ async void transfer(SocketConnection connection, string filename)
 		var data = new uint8[4096];
 		int64 written = 0;
 		while (!file_stream.eof()) {
-			var len = file_stream.read(data);
-			data[len] = 0;
-			written += len;
-			progress_window.set_fraction((double) written / length);
-			yield ostream.write_async(data);
+			var length = file_stream.read(data);
+			written += length;
+			progress_window.set_fraction((double) written / filesize);
+			yield ostream.write_async(data[0:length]);
 		}
 	} catch (Error err) {
 		error_dialog(_("Failed to send file: %s".printf(err.message)));
