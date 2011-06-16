@@ -90,7 +90,7 @@ bool listen_incoming(SocketConnection conn)
 	// open file for writing
 	FileOutputStream fileostream;
 	try {
-		fileostream = file.create(FileCreateFlags.REPLACE_DESTINATION);
+		fileostream = file.replace(null, false, FileCreateFlags.REPLACE_DESTINATION);
 	} catch (Error e) {
 		error_dialog(_("Failed to open file for writing: %s".printf(e.message)));
 		return true;
