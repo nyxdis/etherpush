@@ -42,7 +42,7 @@ bool listen_incoming(SocketConnection conn)
 	var istream = new DataInputStream(conn.get_input_stream());
 	var ostream = new DataOutputStream(conn.get_output_stream());
 	string filename, buffer;
-	int length;
+	int filesize;
 	uchar byte;
 
 	try {
@@ -55,7 +55,7 @@ bool listen_incoming(SocketConnection conn)
 			istream.read_byte();
 
 			buffer = istream.read_upto("\003", -1, null);
-			length = int.parse(buffer);
+			filesize = int.parse(buffer);
 
 			// consume ETX -> file following
 			istream.read_byte();
@@ -67,7 +67,7 @@ bool listen_incoming(SocketConnection conn)
 		return true;
 	}
 
-	buffer = incoming_dialog(filename, length);
+	buffer = incoming_dialog(filename, filesize);
 
 	if (buffer == null) { // cancel transfer
 		byte = 24; // NAK
@@ -97,22 +97,21 @@ bool listen_incoming(SocketConnection conn)
 	}
 
 	try {
-		buffer = istream.read_upto("\004", -1, null);
-	} catch (Error e) {
-		error_dialog(_("Failed to read: %s".printf(e.message)));
-		return true;
-	}
+		int read = 0;
 
-	try {
-		fileostream.write(buffer.data);
-	} catch (Error e) {
-		error_dialog(_("Failed to write to file: %s".printf(e.message)));
-		return true;
-	}
+		while (read < filesize) {
+			var data = new uint8[4096];
+			var length = istream.read(data);
+			read += (int) length;
+			debug("read %ld bytes (%d overall)\n", length, read);
 
-	// consume EOT
-	try {
-		istream.read_byte();
+			try {
+				fileostream.write(data);
+			} catch (Error e) {
+				error_dialog(_("Failed to write to file: %s".printf(e.message)));
+				return true;
+			}
+		}
 	} catch (Error e) {
 		error_dialog(_("Failed to read: %s".printf(e.message)));
 		return true;
