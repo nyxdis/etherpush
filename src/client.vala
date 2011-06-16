@@ -66,10 +66,14 @@ async void transfer(SocketConnection connection, string filename)
 		}
 
 		var file_stream = FileStream.open(filename, "rb");
+		var progress_window = new ProgressWindow(_("Sending file"));
 		var data = new uint8[4096];
+		int64 written = 0;
 		while (!file_stream.eof()) {
 			var len = file_stream.read(data);
 			data[len] = 0;
+			written += len;
+			progress_window.set_fraction((double) written / length);
 			yield ostream.write_async(data);
 		}
 

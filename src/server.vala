@@ -49,7 +49,7 @@ bool listen_incoming(SocketConnection conn)
 		byte = istream.read_byte();
 
 		if (byte == 2) { // STX -> filename following
-			filename = istream.read_upto("\035",-1, null);
+			filename = istream.read_upto("\035", -1, null);
 
 			// consume GS -> size following
 			istream.read_byte();
