@@ -97,12 +97,14 @@ async void listen_incoming(SocketConnection conn)
 	}
 
 	try {
+		var progress_window = new ProgressWindow(_("Receiving file"));
 		int read = 0;
 
 		while (read < filesize) {
 			var data = new uint8[4096];
 			var length = yield istream.read_async(data);
 			read += (int) length;
+			progress_window.set_fraction((double) read / filesize);
 
 			try {
 				fileostream.write(data[0:length]);
