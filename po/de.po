@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: etherpush git\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-15 13:27+0200\n"
-"PO-Revision-Date: 2011-06-15 13:27+0200\n"
+"POT-Creation-Date: 2011-06-17 10:56+0200\n"
+"PO-Revision-Date: 2011-06-17 10:58+0200\n"
 "Last-Translator: Christoph Mende <mende.christoph@gmail.com>\n"
 "Language-Team: Christoph Mende <mende.christoph@gmail.com>\n"
 "Language: German\n"
@@ -37,7 +37,11 @@ msgstr "Dateiübertragung abgelehnt"
 msgid "Received invalid response"
 msgstr "Ungültige Antwort empfangen"
 
-#: ../src/client.vala:78
+#: ../src/client.vala:69
+msgid "Sending file"
+msgstr "Sende Datei"
+
+#: ../src/client.vala:79
 #, c-format
 msgid "Failed to send file: %s"
 msgstr "Datei konnte nicht gesendet werden: %s"
@@ -78,7 +82,7 @@ msgstr "Minimieren"
 msgid "Failed to add listener: %s"
 msgstr "Empfänger konnte nicht gestartet werden: %s"
 
-#: ../src/server.vala:66 ../src/server.vala:102 ../src/server.vala:117
+#: ../src/server.vala:66 ../src/server.vala:117
 #, c-format
 msgid "Failed to read: %s"
 msgstr "Fehler beim Lesen: %s"
@@ -91,9 +95,13 @@ msgstr "Fehler beim Schreiben: %s"
 #: ../src/server.vala:95
 #, c-format
 msgid "Failed to open file for writing: %s"
-msgstr "Datei konnte nicht zum Schreiben geöffnet werden: %s"
+msgstr "Datei konnte nicht geöffnet werden: %s"
 
-#: ../src/server.vala:109
+#: ../src/server.vala:100
+msgid "Receiving file"
+msgstr "Empfange Datei"
+
+#: ../src/server.vala:112
 #, c-format
 msgid "Failed to write to file: %s"
 msgstr "Datei konnte nicht geschrieben werden: %s"
