@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: etherpush git\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-17 10:56+0200\n"
+"POT-Creation-Date: 2011-08-25 17:05+0200\n"
 "PO-Revision-Date: 2011-06-17 10:58+0200\n"
 "Last-Translator: Christoph Mende <mende.christoph@gmail.com>\n"
 "Language-Team: Christoph Mende <mende.christoph@gmail.com>\n"
@@ -17,40 +17,40 @@ msgstr ""
 "Content-Transfer-Encoding: UTF-8\n"
 "Plural-Forms: \n"
 
-#: ../src/client.vala:33
+#: ../src/client.vala:22
 #, c-format
 msgid "Connection failed: %s"
 msgstr "Verbindung Fehlgeschlagen: %s"
 
-#: ../src/client.vala:51
+#: ../src/client.vala:40
 #, c-format
 msgid "Failed to load file: %s"
 msgstr "Datei konnte nicht geladen werden: %s"
 
 #. NAK
-#: ../src/client.vala:61
+#: ../src/client.vala:50
 msgid "File transfer rejected"
 msgstr "Dateiübertragung abgelehnt"
 
 #. ACK
-#: ../src/client.vala:64
+#: ../src/client.vala:53
 msgid "Received invalid response"
 msgstr "Ungültige Antwort empfangen"
 
-#: ../src/client.vala:69
+#: ../src/client.vala:58
 msgid "Sending file"
 msgstr "Sende Datei"
 
-#: ../src/client.vala:79
+#: ../src/client.vala:68
 #, c-format
 msgid "Failed to send file: %s"
 msgstr "Datei konnte nicht gesendet werden: %s"
 
-#: ../src/incoming-dialog.vala:30
+#: ../src/incoming-dialog.vala:19
 msgid "Accept file transfer?"
 msgstr "Dateiübertragung annehmen?"
 
-#: ../src/incoming-dialog.vala:31
+#: ../src/incoming-dialog.vala:20
 #, c-format
 msgid ""
 "Filename %s\n"
@@ -59,57 +59,57 @@ msgstr ""
 "Dateiname: %s\n"
 "Größe: %lu"
 
-#: ../src/incoming-dialog.vala:33
+#: ../src/incoming-dialog.vala:22
 msgid "Save file"
 msgstr "Datei speichern"
 
 #. file chooser button
-#: ../src/send-dialog.vala:58
+#: ../src/send-dialog.vala:47
 msgid "File to send"
 msgstr "Zu sendende Datei"
 
 #. send button
-#: ../src/send-dialog.vala:66
+#: ../src/send-dialog.vala:55
 msgid "Send"
 msgstr "Senden"
 
-#: ../src/send-dialog.vala:77
+#: ../src/send-dialog.vala:66
 msgid "Hide"
 msgstr "Minimieren"
 
-#: ../src/server.vala:32
+#: ../src/server.vala:21
 #, c-format
 msgid "Failed to add listener: %s"
 msgstr "Empfänger konnte nicht gestartet werden: %s"
 
-#: ../src/server.vala:66 ../src/server.vala:117
+#: ../src/server.vala:55 ../src/server.vala:106
 #, c-format
 msgid "Failed to read: %s"
 msgstr "Fehler beim Lesen: %s"
 
-#: ../src/server.vala:81
+#: ../src/server.vala:70
 #, c-format
 msgid "Failed to write: %s"
 msgstr "Fehler beim Schreiben: %s"
 
-#: ../src/server.vala:95
+#: ../src/server.vala:84
 #, c-format
 msgid "Failed to open file for writing: %s"
 msgstr "Datei konnte nicht geöffnet werden: %s"
 
-#: ../src/server.vala:100
+#: ../src/server.vala:89
 msgid "Receiving file"
 msgstr "Empfange Datei"
 
-#: ../src/server.vala:112
+#: ../src/server.vala:101
 #, c-format
 msgid "Failed to write to file: %s"
 msgstr "Datei konnte nicht geschrieben werden: %s"
 
-#: ../src/status-icon.vala:30
+#: ../src/status-icon.vala:19
 msgid "Show"
 msgstr "Öffnen"
 
-#: ../src/status-icon.vala:34
+#: ../src/status-icon.vala:23
 msgid "Quit"
 msgstr "Beenden"
